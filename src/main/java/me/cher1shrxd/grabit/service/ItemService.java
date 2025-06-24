@@ -1,6 +1,7 @@
 package me.cher1shrxd.grabit.service;
 
 import me.cher1shrxd.grabit.dto.req.ItemRequest;
+import me.cher1shrxd.grabit.dto.req.ItemUpdateRequest;
 import me.cher1shrxd.grabit.dto.res.BaseResponse;
 import me.cher1shrxd.grabit.dto.res.ItemResponse;
 import me.cher1shrxd.grabit.entity.CartEntity;
@@ -45,11 +46,11 @@ public class ItemService {
         return BaseResponse.of(null, "can't find item", 404);
     }
 
-    public BaseResponse<ItemResponse> updateItemAmountById(Long itemId) {
+    public BaseResponse<ItemResponse> updateItemAmountById(Long itemId, ItemUpdateRequest request) {
         Optional<ItemEntity> optional = itemRepository.findById(itemId);
         if (optional.isPresent()) {
             ItemEntity itemEntity = optional.get();
-            itemEntity.setAmount(itemEntity.getAmount());
+            itemEntity.setAmount(request.getAmount());
             ItemEntity saved = itemRepository.save(itemEntity);
             if (saved != null) {
                 ItemResponse itemResponse = new ItemResponse();
