@@ -38,7 +38,7 @@ public class ItemService {
         return BaseResponseDTO.of(null, "can't find cart", 404);
     }
 
-    public BaseResponseDTO<Long> getItemById(Long itemId) {
+    public BaseResponseDTO<Long> deleteByItemId(Long itemId) {
         if (itemRepository.existsById(itemId)) {
             itemRepository.deleteById(itemId);
             return BaseResponseDTO.of(itemId, "success", 200);
