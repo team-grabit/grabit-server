@@ -4,6 +4,9 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "carts")
 @Getter
@@ -15,4 +18,7 @@ public class CartEntity {
 
     @Column()
     private String name;
+
+    @OneToMany(fetch = FetchType.LAZY)
+    private List<ItemEntity> items = new ArrayList<>();
 }
