@@ -19,7 +19,7 @@ public class ItemEntity {
     @Column()
     private Long amount;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "cart_id")
     private CartEntity cart;
 }
