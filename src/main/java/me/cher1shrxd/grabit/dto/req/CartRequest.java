@@ -9,6 +9,6 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class CartRequestDTO {
+public class CartRequest {
     private String name;
 }

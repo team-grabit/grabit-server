@@ -4,15 +4,13 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import me.cher1shrxd.grabit.entity.ItemEntity;
-
-import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
-public class CartResponseDTO {
-    private Long id;
+public class ItemResponse {
     private String name;
+    private Long amount;
+    private Long cartId;
 }
