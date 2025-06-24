@@ -28,11 +28,14 @@ public class CartService {
         return BaseResponse.of(cartsList, "success", 200);
     }
 
-    public boolean createCart(CartRequest cartRequest) {
+    public BaseResponse<CartResponse> createCart(CartRequest cartRequest) {
         CartEntity cartEntity = new CartEntity();
         cartEntity.setName(cartRequest.getName());
         CartEntity saved = cartRepository.save(cartEntity);
-        return saved != null;
+        if (saved != null) {
+            return BaseResponse.of(null,"create",201);
+        }
+        return BaseResponse.of(null,"bad request",404);
     }
 
     public BaseResponse<Long> deleteCartById(Long itemId) {
