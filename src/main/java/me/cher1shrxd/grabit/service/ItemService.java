@@ -45,4 +45,21 @@ public class ItemService {
         }
         return BaseResponseDTO.of(null, "can't find item", 404);
     }
+
+    public BaseResponseDTO<ItemResponseDTO> updateItemAmountById(Long itemId) {
+        Optional<ItemEntity> optional = itemRepository.findById(itemId);
+        if (optional.isPresent()) {
+            ItemEntity itemEntity = optional.get();
+            itemEntity.setAmount(itemEntity.getAmount());
+            ItemEntity saved = itemRepository.save(itemEntity);
+            if (saved != null) {
+                ItemResponseDTO itemResponseDTO = new ItemResponseDTO();
+                itemResponseDTO.setAmount(saved.getAmount());
+                itemResponseDTO.setName(saved.getName());
+                return BaseResponseDTO.of(itemResponseDTO, "success", 200);
+            }
+            return BaseResponseDTO.of(null, "item not saved", 400);
+        }
+        return BaseResponseDTO.of(null, "can't find item", 404);
+    }
 }
