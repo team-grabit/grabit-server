@@ -1,6 +1,6 @@
 package me.cher1shrxd.grabit.dto.res;
 
-public class ItemDTO {
+public class ItemResponseDTO {
     private String name;
     private Long amount;
 }

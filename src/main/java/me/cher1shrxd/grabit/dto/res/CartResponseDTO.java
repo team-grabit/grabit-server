@@ -12,7 +12,7 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 @Setter
-public class CartDTO {
+public class CartResponseDTO {
     private Long id;
-    private List<ItemEntity> items;
+    private String name;
 }
