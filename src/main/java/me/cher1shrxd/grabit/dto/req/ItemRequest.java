@@ -1,4 +1,4 @@
-package me.cher1shrxd.grabit.dto.res;
+package me.cher1shrxd.grabit.dto.req;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,7 +9,8 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class ItemResponse {
+public class ItemRequest {
     private String name;
     private Long amount;
+    private Long cartId;
 }

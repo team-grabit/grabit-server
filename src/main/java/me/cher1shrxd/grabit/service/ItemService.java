@@ -1,5 +1,6 @@
 package me.cher1shrxd.grabit.service;
 
+import me.cher1shrxd.grabit.dto.req.ItemRequest;
 import me.cher1shrxd.grabit.dto.res.BaseResponse;
 import me.cher1shrxd.grabit.dto.res.ItemResponse;
 import me.cher1shrxd.grabit.entity.CartEntity;
@@ -59,5 +60,24 @@ public class ItemService {
             return BaseResponse.of(null, "item not saved", 400);
         }
         return BaseResponse.of(null, "can't find item", 404);
+    }
+
+    public BaseResponse<Long> createItem(ItemRequest request) {
+        ItemEntity itemEntity = new ItemEntity();
+        itemEntity.setAmount(request.getAmount());
+        itemEntity.setName(request.getName());
+
+        Optional<CartEntity> cartEntity = cartRepository.findById(request.getCartId());
+        if (cartEntity.isPresent()) {
+            CartEntity cart = cartEntity.get();
+            itemEntity.setCart(cart);
+            ItemEntity saved = itemRepository.save(itemEntity);
+            if (saved != null) {
+                return BaseResponse.of(saved.getId(), "success", 200);
+            }
+            return BaseResponse.of(null, "item not saved", 400);
+        }
+        return BaseResponse.of(null, "can't find cart", 404);
+
     }
 }
