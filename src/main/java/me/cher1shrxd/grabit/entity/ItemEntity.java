@@ -13,14 +13,15 @@ public class ItemEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column()
+    @Column
     private String name;
 
-    @Column()
+    @Column
     private Long amount;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "cart_id")
     private CartEntity cart;
 }
+
 
