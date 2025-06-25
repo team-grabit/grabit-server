@@ -21,7 +21,7 @@ public class ItemController {
         return itemService.getItemsByCart(cartId);
     }
 
-    @PostMapping("/")
+    @PostMapping
     public BaseResponse<Long> createItem(@RequestBody ItemRequest request) {
         return itemService.createItem(request);
     }

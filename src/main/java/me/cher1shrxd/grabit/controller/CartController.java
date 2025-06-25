@@ -11,17 +11,18 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController("/carts")
+@RestController()
+@RequestMapping("/carts")
 public class CartController {
     @Autowired
     private CartService cartService;
 
-    @GetMapping("/")
+    @GetMapping
     public BaseResponse<List<CartResponse>> getAllCarts() {
         return cartService.getAllCarts();
     }
 
-    @PostMapping("/")
+    @PostMapping
     public BaseResponse<CartResponse> createCart(@RequestBody CartRequest cartRequest) {
         return cartService.createCart(cartRequest);
     }
