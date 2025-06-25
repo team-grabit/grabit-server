@@ -74,7 +74,7 @@ public class ItemService {
             itemEntity.setCart(cart);
             ItemEntity saved = itemRepository.save(itemEntity);
             if (saved != null) {
-                return BaseResponse.of(saved.getId(), "success", 200);
+                return BaseResponse.of(saved.getId(), "success", 201);
             }
             return BaseResponse.of(null, "item not saved", 400);
         }
